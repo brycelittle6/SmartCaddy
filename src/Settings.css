@@ -1,0 +1,55 @@
+/* src/Settings.css */
+.settings-container {
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .back-link {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    text-decoration: none;
+    font-size: 1.2rem;
+  }
+  
+  .yardages-tab {
+    margin-top: 2rem;
+  }
+  
+  .yardages-tab ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .yardages-tab li {
+    margin: 0.5rem 0;
+  }
+  
+  .popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .popup-content {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .popup-content input {
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+  }
+  
+  .popup-content button {
+    margin-top: 0.5rem;
+  }
