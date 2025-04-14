@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
 import Settings from './Settings'
+import Scorecard from './Scorecard'
 import './App.css'
 
 interface Club {
@@ -10,10 +11,10 @@ interface Club {
 
 function App() {
   const [distance, setDistance] = useState('')
+  const [elevation, setElevation] = useState('')
   const [suggestedClub, setSuggestedClub] = useState<Club | null>(null)
   const [clubs, setClubs] = useState<Club[]>([])
 
-  // Load clubs from local storage on mount
   useEffect(() => {
     const storedClubs = localStorage.getItem('clubs')
     if (storedClubs) {
@@ -23,17 +24,20 @@ function App() {
 
   const suggestClub = () => {
     const dist = parseInt(distance, 10)
-    if (clubs.length === 0) {
+    const elev = parseInt(elevation, 10)
+
+    if (clubs.length === 0 || isNaN(dist) || isNaN(elev)) {
       setSuggestedClub(null)
       return
     }
 
-    // Find the closest club
+    const adjustedDistance = dist + elev
+
     let closestClub = clubs[0]
-    let smallestDifference = Math.abs(dist - closestClub.distance)
+    let smallestDifference = Math.abs(adjustedDistance - closestClub.distance)
 
     clubs.forEach((currentClub) => {
-      const currentDifference = Math.abs(dist - currentClub.distance)
+      const currentDifference = Math.abs(adjustedDistance - currentClub.distance)
       if (currentDifference < smallestDifference) {
         smallestDifference = currentDifference
         closestClub = currentClub
@@ -47,42 +51,58 @@ function App() {
     <Routes>
       <Route path="/" element={
         <div className="app-container">
+          <Link to="/scorecard" className="scorecard-link">🏅 Scorecard</Link>
           <Link to="/settings" className="settings-link">⚙️</Link>
           <h1>🏌️ Smart Golf Caddy</h1>
           <div className="input-container">
             <input
               type="number"
               value={distance}
-              placeholder="Enter distance to hole (yards)"
+              placeholder="Distance to hole (yards)"
               onChange={(e) => setDistance(e.target.value)}
+            />
+            <input
+              type="number"
+              value={elevation}
+              placeholder="Elevation (+uphill / -downhill yards)"
+              onChange={(e) => setElevation(e.target.value)}
             />
             <button onClick={suggestClub}>Suggest Club</button>
           </div>
 
           {suggestedClub ? (
-            <table className="suggestion-table">
-              <thead>
-                <tr>
-                  <th>Suggested Club</th>
-                  <th>Club Stock Yardage</th>
-                  <th>Distance to Hole</th>
-                  <th>Difference</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>{suggestedClub.name}</td>
-                  <td>{suggestedClub.distance} yards</td>
-                  <td>{distance} yards</td>
-                  <td>{Math.abs(parseInt(distance, 10) - suggestedClub.distance)} yards</td>
-                </tr>
-              </tbody>
-            </table>
+            <div className="suggestion-card">
+              <div className="suggestion-row">
+                <span className="label">Suggested Club:</span>
+                <span className="value">{suggestedClub.name}</span>
+              </div>
+              <div className="suggestion-row">
+                <span className="label">Club Stock Yardage:</span>
+                <span className="value">{suggestedClub.distance} yards</span>
+              </div>
+              <div className="suggestion-row">
+                <span className="label">Actual Distance:</span>
+                <span className="value">{distance} yards</span>
+              </div>
+              <div className="suggestion-row">
+                <span className="label">Elevation:</span>
+                <span className="value">{elevation} yards</span>
+              </div>
+              <div className="suggestion-row">
+                <span className="label">Adjusted Distance:</span>
+                <span className="value">{parseInt(distance, 10) + parseInt(elevation, 10)} yards</span>
+              </div>
+              <div className="suggestion-row">
+                <span className="label">Difference:</span>
+                <span className="value">{Math.abs((parseInt(distance, 10) + parseInt(elevation, 10)) - suggestedClub.distance)} yards</span>
+              </div>
+            </div>
           ) : (
-            <p>No clubs set. Please add clubs in settings.</p>
+            <p>Ensure club distances are set in the settings and inputs are valid!</p>
           )}
         </div>
       } />
+      <Route path="/scorecard" element={<Scorecard />} />
       <Route path="/settings" element={<Settings />} />
     </Routes>
   )

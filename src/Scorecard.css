@@ -1,0 +1,50 @@
+.course-search input {
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+  }
+  
+  .course-results {
+    margin-top: 1rem;
+    text-align: left;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .course-item {
+    padding: 0.5rem;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .course-item button {
+    padding: 0.3rem 0.6rem;
+  }
+  
+  .scorecard {
+    margin-top: 2rem;
+  }
+  
+  .hole {
+    margin: 0.5rem 0;
+  }
+  
+  .hole input {
+    margin-left: 0.5rem;
+    width: 60px;
+  }
+  
+  .past-rounds {
+    margin-top: 2rem;
+    text-align: left;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .round {
+    padding: 0.5rem;
+    border-bottom: 1px solid #ddd;
+  }
