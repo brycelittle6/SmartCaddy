@@ -48,3 +48,151 @@
     padding: 0.5rem;
     border-bottom: 1px solid #ddd;
   }
+
+  .scorecard-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .scorecard-table th,
+  .scorecard-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .scorecard-table th {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .scorecard-table tr:nth-child(even) {
+    background-color: tan;
+  }
+  
+  .scorecard-table tr:hover {
+    background-color: #ddd;
+  }
+  
+  .scorecard-table input[type="number"] {
+    width: 60px;
+    padding: 4px;
+    text-align: center;
+  }
+  
+  .save-round-btn {
+    margin-top: 15px;
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .save-round-btn:hover {
+    background-color: #45a049;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  h1, h2 {
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  button {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: none;
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: var(--secondary-color);
+  }
+
+  .round-card {
+    background-color: var(--accent-color);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .round-card:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .delete-btn {
+    background-color: #e57373;
+  }
+  
+  .delete-btn:hover {
+    background-color: #ef5350;
+  }
+
+
+input[type="text"],
+input[type="number"] {
+  padding: 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2);
+}
+
+button, .round-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover, .round-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .round-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .delete-btn {
+    margin-top: 0.5rem;
+    width: 100%;
+  }
+}
+
+.tee-selection {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.tee-selection select {
+  padding: 0.4rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin-left: 0.5rem;
+}

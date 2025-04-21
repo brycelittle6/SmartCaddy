@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
 import Settings from './Settings'
 import Scorecard from './Scorecard'
+import Stats from './Stats'
 import './App.css'
 
 interface Club {
@@ -51,8 +52,17 @@ function App() {
     <Routes>
       <Route path="/" element={
         <div className="app-container">
-          <Link to="/scorecard" className="scorecard-link">🏅 Scorecard</Link>
-          <Link to="/settings" className="settings-link">⚙️</Link>
+          <Link to="/scorecard" className="scorecard-link">
+            <i className="fa-solid fa-golf-ball-tee"></i> Scorecard
+          </Link>
+
+          <Link to="/stats" className="stats-link">
+            <i className="fa-solid fa-chart-simple"></i> Stats
+        </Link>
+
+          <Link to="/settings" className="settings-link">
+            <i className="fa-solid fa-gear"></i>
+          </Link>
           <h1>🏌️ Smart Golf Caddy</h1>
           <div className="input-container">
             <input
@@ -104,6 +114,7 @@ function App() {
       } />
       <Route path="/scorecard" element={<Scorecard />} />
       <Route path="/settings" element={<Settings />} />
+      <Route path="/stats" element={<Stats />} />
     </Routes>
   )
 }
