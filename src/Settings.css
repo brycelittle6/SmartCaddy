@@ -117,3 +117,66 @@ button:hover, .round-card:hover {
     width: 100%;
   }
 }
+
+.golf-bags-section,
+.preferences-section,
+.reset-section {
+  margin-bottom: 2rem;
+}
+
+.golf-bags-section ul,
+.golf-bags-section li {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0;
+}
+
+.golf-bags-section li {
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.golf-bags-section button {
+  margin-left: 0.5rem;
+}
+
+/* Default (Light Mode) */
+:root {
+  --primary-color: #2E7D32;
+  --secondary-color: #81C784;
+  --accent-color: #F5F5F5;
+  --text-color: #333333;
+  --background-color: #ffffff;
+}
+
+/* Dark Mode */
+[data-theme='dark'] {
+  --primary-color: #81C784;
+  --secondary-color: #2E7D32;
+  --accent-color: #1e1e1e;
+  --text-color: #ffffff;
+  --background-color: #121212;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--secondary-color);
+}

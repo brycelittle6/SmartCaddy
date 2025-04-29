@@ -71,6 +71,11 @@ button {
   color: #555;
 }
 
+p {
+  text-align: center;
+  color: #333;
+}
+
 /* Responsive adjustments for smaller screens */
 @media (max-width: 480px) {
   .input-container {
