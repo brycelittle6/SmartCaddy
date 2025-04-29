@@ -1,42 +1,69 @@
+/* src/Stats.css */
+
+/* Container */
 .stats-container {
-    padding: 2rem;
+    position: relative;
+    padding: 2rem 1rem;
     text-align: center;
   }
   
-  .stats-card {
-    max-width: 500px;
-    margin: 2rem auto;
-    padding: 1rem;
-    background-color: #f2f2f2;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    text-align: left;
-  }
-  
-  .stat-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .stat-row:last-child {
-    border-bottom: none;
-  }
-  
-  .label {
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .value {
-    color: #555;
-  }
-  
+  /* Back Link */
   .back-link {
     position: absolute;
     top: 1rem;
     left: 1rem;
-    text-decoration: none;
     font-size: 1.2rem;
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color 0.3s;
   }
+  .back-link:hover {
+    color: var(--secondary-color);
+  }
+  
+  /* Stats Card */
+  .stats-card {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: var(--accent-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: left;
+  }
+  
+  /* Stat Rows */
+  .stat-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #ddd;
+  }
+  .stat-row:last-child {
+    border-bottom: none;
+  }
+  
+  /* Labels & Values */
+  .label {
+    font-weight: bold;
+    color: var(--text-color);
+  }
+  .value {
+    color: var(--text-color);
+  }
+  
+  /* Responsive Tweaks */
+  @media (max-width: 480px) {
+    .stats-card {
+      margin: 1rem;
+      padding: 1rem;
+    }
+    .stat-row {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .value {
+      margin-top: 0.25rem;
+    }
+  }
+  

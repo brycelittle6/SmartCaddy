@@ -11,7 +11,7 @@ interface Club {
   name: string
   distance: number
   feedback?: {
-    lastAdjustedDistance?: number // True distance (distance + elevation) from the last shot
+    lastAdjustedDistance?: number
     wasGood?: boolean
     badFeedback?: {
       tooLong?: boolean
@@ -73,41 +73,33 @@ function App() {
     });
   
     setSuggestedClub(closestClub);
-    setFeedbackGiven(false); // Reset feedback state for the new suggestion
+    setFeedbackGiven(false); 
   };  
 
   // Handle "Good" Feedback
-  // Handle "Good" Feedback
-const handleGoodFeedback = () => {
-  if (!suggestedClub) return;
+  const handleGoodFeedback = () => {
+    if (!suggestedClub) return;
 
-  // parse & default your elevation
-  const rawElev = parseInt(elevation, 10);
-  const elevOffset = isNaN(rawElev) ? 0 : rawElev;
-  const dist = parseInt(distance, 10);
-  const adjustedDistance = dist + elevOffset;
+    const rawElev = parseInt(elevation, 10);
+    const elevOffset = isNaN(rawElev) ? 0 : rawElev;
+    const dist = parseInt(distance, 10);
+    const adjustedDistance = dist + elevOffset;
 
-  // update just that one club
-  const updatedClubs = clubs.map((club) => {
-    if (club.name === suggestedClub.name) {
-      return {
-        ...club,
-        feedback: {
-          // set good flag, clear any old badFeedback
+    const updatedClubs = clubs.map((club) => {
+      if (club.name === suggestedClub.name) {
+        return {
+          ...club,
+          feedback: {
           wasGood: true,
           lastAdjustedDistance: adjustedDistance,
-          // badFeedback: undefined, // you could explicitly clear it
         },
       };
     }
     return club;
   });
 
-  // update state
   setClubs(updatedClubs);
 
-  // persist back into your golfBags (otherwise your on-mount load never sees this change)
-  //–– load all bags, replace the active one, re-save ––
   const allBags = JSON.parse(localStorage.getItem('golfBags') || '[]');
   const newBags = allBags.map((bag: any) =>
     bag.isActive
@@ -116,7 +108,6 @@ const handleGoodFeedback = () => {
   );
   localStorage.setItem('golfBags', JSON.stringify(newBags));
 
-  // now lock out further feedback until the next suggestion
   setFeedbackGiven(true);
 };
 
@@ -141,8 +132,8 @@ const handleGoodFeedback = () => {
           feedback: {
             ...club.feedback,
             wasGood: false,
-            lastAdjustedDistance: adjustedDistance, // Set the adjusted distance
-            badFeedback: badFeedback, // Save the bad feedback
+            lastAdjustedDistance: adjustedDistance, 
+            badFeedback: badFeedback,
           },
         };
       }

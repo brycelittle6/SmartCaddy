@@ -76,10 +76,8 @@ function BagDetails() {
     };
     setCurrentBag(updatedCurrentBag);
 
-    // Save to localStorage explicitly
     localStorage.setItem('golfBags', JSON.stringify(updatedBags));
 
-    // Clear input fields
     setClubName('');
     setClubDistance('');
   };
@@ -106,7 +104,6 @@ function BagDetails() {
     };
     setCurrentBag(updatedCurrentBag);
 
-    // Save to localStorage explicitly
     localStorage.setItem('golfBags', JSON.stringify(updatedBags));
   };
 

@@ -65,7 +65,7 @@ function Settings() {
     }
 
     const newBag: GolfBag = {
-      id: Date.now(), // Unique ID
+      id: Date.now(), 
       name: newBagName,
       clubs: [],
       isActive: golfBags.length === 0, // First bag is active by default
@@ -76,7 +76,6 @@ function Settings() {
     setNewBagName('');
     setShowAddBagPopup(false);
 
-    // Save to localStorage explicitly
     localStorage.setItem('golfBags', JSON.stringify(updatedBags));
   };
 
@@ -89,7 +88,6 @@ function Settings() {
 
     setGolfBags(updatedBags);
 
-    // Save to localStorage explicitly
     localStorage.setItem('golfBags', JSON.stringify(updatedBags));
     console.log('Active Bag ID:', bagId);
     console.log('Updated Bags:', updatedBags);
@@ -106,14 +104,12 @@ function Settings() {
     if (window.confirm('Are you sure you want to delete this bag? This action cannot be undone.')) {
       const updatedBags = golfBags.filter((bag) => bag.id !== bagId);
 
-      // If the deleted bag was active, set the first bag as active (if any remain)
       if (updatedBags.length > 0 && !updatedBags.some((bag) => bag.isActive)) {
         updatedBags[0].isActive = true;
       }
 
       setGolfBags(updatedBags);
 
-      // Save to localStorage explicitly
       localStorage.setItem('golfBags', JSON.stringify(updatedBags));
     }
   };
@@ -170,7 +166,6 @@ function Settings() {
         <button onClick={resetApplication}>Reset</button>
       </div>
 
-      {/* Add Bag Popup */}
       {showAddBagPopup && (
         <div className="popup">
           <div className="popup-content">

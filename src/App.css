@@ -1,112 +1,98 @@
 /* src/App.css */
+
+/* Layout */
 .app-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 4rem; /* Adjust this value to move content down */
-  position: relative;
+  padding: 4rem 1rem 1rem;
   min-height: 100vh;
   box-sizing: border-box;
-}
-.input-container {
-  margin: 1rem;
+  position: relative;
 }
 
-input[type="number"] {
+/* Inputs + Suggest button */
+.input-container {
+  margin: 1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.input-container input {
+  flex: 1 1 250px;
   padding: 0.5rem;
   font-size: 1rem;
-  margin-right: 0.5rem;
-  width: 250px;
 }
-
-button {
+.input-container button {
   padding: 0.5rem 1rem;
   font-size: 1rem;
-  cursor: pointer;
 }
 
-.settings-link {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  font-size: 1.5rem;
-  text-decoration: none;
-}
-
-
-.input-container input[type="number"] {
-  margin: 0.5rem;
-  padding: 0.5rem;
-  font-size: 1rem;
-  width: 250px;
-}
-
+/* Suggestion card */
 .suggestion-card {
   margin: 1.5rem auto;
   padding: 1rem;
   max-width: 400px;
-  background-color: #f2f2f2;
+  width: 100%;
+  background-color: var(--accent-color, #f2f2f2);
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
   text-align: left;
 }
-
 .suggestion-row {
   display: flex;
   justify-content: space-between;
   padding: 0.5rem 0;
   border-bottom: 1px solid #ddd;
 }
-
 .suggestion-row:last-child {
   border-bottom: none;
 }
-
 .label {
   font-weight: bold;
-  color: #333;
+  color: var(--text-color, #333);
 }
-
 .value {
-  color: #555;
+  color: var(--text-color, #555);
 }
-
 p {
+  margin: 1rem 0;
   text-align: center;
-  color: #333;
+  color: var(--text-color, #333);
 }
 
-/* Responsive adjustments for smaller screens */
-@media (max-width: 480px) {
-  .input-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .input-container input[type="number"] {
-    width: 90%;
-    margin-bottom: 0.5rem;
-  }
-
-  .suggestion-card {
-    width: 90%;
-    padding: 0.75rem;
-  }
-
-  .suggestion-row {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .value {
-    margin-top: 0.25rem;
-  }
+/* Bad‐feedback form */
+.bad-feedback-form {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.bad-feedback-distance {
+  display: flex;
+  gap: 0.5rem;
+}
+.bad-feedback-distance button,
+.bad-feedback-strike select {
+  padding: 0.5rem;
+}
+.bad-feedback-strike {
+  display: flex;
+  flex-direction: column;
+}
+.bad-feedback-strike label {
+  margin-bottom: 0.25rem;
+  font-weight: bold;
+}
+.active {
+  background-color: var(--primary-color, #2E7D32);
+  color: #fff;
 }
 
+/* Top navigation links */
 .scorecard-link,
-.settings-link,
-.stats-link {
+.stats-link,
+.settings-link {
   position: absolute;
   top: 1rem;
   font-size: 1.2rem;
@@ -115,90 +101,36 @@ p {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  transition: color 0.3s ease;
+  transition: color 0.3s;
 }
-
-.scorecard-link {
-  left: 1rem;
-}
-
-.settings-link {
-  right: 1rem;
-}
-
-.stats-link {
-  left: 50%;
-  transform: translateX(-50%);
-}
-
+.scorecard-link { left: 1rem; }
+.stats-link     { left: 50%; transform: translateX(-50%); }
+.settings-link  { right: 1rem; }
 .scorecard-link:hover,
-.settings-link:hover,
-.stats-link:hover {
+.stats-link:hover,
+.settings-link:hover {
   color: var(--secondary-color, #81C784);
 }
 
-
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-h1, h2 {
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-button {
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  border: none;
-  background-color: var(--primary-color);
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: var(--secondary-color);
-}
-
-input[type="text"],
-input[type="number"] {
-  padding: 0.6rem;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  transition: border-color 0.3s ease;
-}
-
-input[type="text"]:focus,
-input[type="number"]:focus {
-  border-color: var(--primary-color);
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2);
-}
-
-button, .round-card {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-button:hover, .round-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-}
-
-@media (max-width: 600px) {
-  .container {
-    padding: 1rem;
+/* Responsive tweaks */
+@media (max-width: 480px) {
+  .input-container {
+    flex-direction: column;
+    align-items: center;
   }
-
-  .round-card {
+  .input-container input,
+  .input-container button {
+    width: 90%;
+  }
+  .suggestion-card {
+    max-width: 90%;
+    padding: 0.75rem;
+  }
+  .suggestion-row {
     flex-direction: column;
     align-items: flex-start;
   }
-
-  .delete-btn {
-    margin-top: 0.5rem;
-    width: 100%;
+  .value {
+    margin-top: 0.25rem;
   }
 }

@@ -1,127 +1,81 @@
+/* src/index.css */
+
+/* Theme Variables */
 :root {
-  --primary-color: #2E7D32;
+  --primary-color:   #2E7D32;
   --secondary-color: #81C784;
-  --accent-color: #F5F5F5;
-  --text-color: #333333;
-  --background-color: #ffffff;
+  --accent-color:    #F5F5F5;
+  --text-color:      #333333;
+  --background-color:#ffffff;
 }
 
-body {
-  background-color: var(--background-color);
-  color: var(--text-color);
-  font-family: 'Inter', sans-serif;
+/* Global Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
+html,
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
+  padding: 0;
   min-width: 320px;
   min-height: 100vh;
+  background-color: var(--background-color);
+  color:            var(--text-color);
+  font-family:      'Inter', sans-serif;
 }
 
+/* Headings */
 h1 {
-  font-size: 3.2em;
+  font-size:   3.2em;
   line-height: 1.1;
+  margin:      0.5em 0;
 }
 
+/* Links */
+a {
+  text-decoration: none;
+  color:           inherit;
+}
+
+/* Buttons */
 button {
+  border:        none;
   border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+  padding:       0.6em 1.2em;
+  font:          inherit;
+  background:    var(--primary-color);
+  color:         #fff;
+  cursor:        pointer;
+  transition:
+    background-color 0.3s ease,
+    transform        0.2s ease,
+    box-shadow       0.2s ease;
 }
 button:hover {
-  border-color: #646cff;
+  background-color: var(--secondary-color);
+  transform:        translateY(-2px);
+  box-shadow:       0 4px 8px rgba(0,0,0,0.15);
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
-
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background-color: #121212;
-    --text-color: #ffffff;
-    --accent-color: #1e1e1e;
-  }
-
-  input[type="text"],
-  input[type="number"] {
-    background-color: #333;
-    color: #fff;
-    border: 1px solid #555;
-  }
-
-  .round-card {
-    background-color: var(--accent-color);
-  }
-}
-
+/* Form Inputs */
 input[type="text"],
 input[type="number"] {
-  padding: 0.6rem;
+  font:          inherit;
+  padding:       0.6rem;
+  border:        1px solid #ccc;
   border-radius: 6px;
-  border: 1px solid #ccc;
-  transition: border-color 0.3s ease;
+  transition:    border-color 0.3s ease;
 }
-
 input[type="text"]:focus,
 input[type="number"]:focus {
   border-color: var(--primary-color);
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2);
-}
-
-button, .round-card {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-button:hover, .round-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-}
-
-@media (max-width: 600px) {
-  .container {
-    padding: 1rem;
-  }
-
-  .round-card {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .delete-btn {
-    margin-top: 0.5rem;
-    width: 100%;
-  }
+  outline:      none;
+  box-shadow:   0 0 0 3px rgba(46,125,50,0.2);
 }

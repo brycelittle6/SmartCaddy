@@ -152,7 +152,7 @@ function Scorecard() {
   const selectCourse = (course: Course) => {
     if (course && course.tees.length > 0) {
       setSelectedCourse(course);
-      setSelectedTee(course.tees[0]); // default to first tee
+      setSelectedTee(course.tees[0]); 
       setCurrentRound(
         course.tees[0].holes.map((hole) => ({
           ...hole,
@@ -216,7 +216,6 @@ function Scorecard() {
       setRounds(updatedRounds);
       alert('Round deleted!');
   
-      // Clear current selection if deleted round was loaded
       if (selectedRoundId === id) {
         setSelectedCourse(null);
         setCurrentRound([]);
@@ -260,7 +259,7 @@ function Scorecard() {
   useEffect(() => {
     const savedRounds = JSON.parse(localStorage.getItem('rounds') || '[]').map((round: any) => ({
       ...round,
-      id: round.id || Date.now() + Math.random(), // ensure each round has an id
+      id: round.id || Date.now() + Math.random(), 
     }));
     setRounds(savedRounds);
   }, []);
