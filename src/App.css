@@ -11,6 +11,10 @@
   position: relative;
 }
 
+h1{
+  text-align: center;
+}
+
 /* Inputs + Suggest button */
 .input-container {
   margin: 1rem 0;
@@ -113,8 +117,12 @@ p {
 }
 
 /* Responsive tweaks */
-@media (max-width: 480px) {
+@media (max-width: 90%) {
   .input-container {
+    margin: 1rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
     flex-direction: column;
     align-items: center;
   }
